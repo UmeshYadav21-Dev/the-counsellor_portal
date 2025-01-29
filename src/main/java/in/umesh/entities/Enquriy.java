@@ -113,7 +113,7 @@ public class Enquriy {
 	}
 	
 	System.out.println();
-	String s = "hii";
+	int i = 10;
     
     
 }
