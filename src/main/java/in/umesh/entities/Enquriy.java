@@ -113,7 +113,11 @@ public class Enquriy {
 	}
 	
 	System.out.println();
+<<<<<<< HEAD
 	String s = "hii";
+=======
+	int i = 10;
+>>>>>>> da3bad6e3278756ec87714d77f0188339816dde9
     
     
 }
