@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login - Counsellor App</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<style>
+/* Page Styling */
+body {
+	background: linear-gradient(135deg, #6a11cb, #2575fc);
+	/* Gradient Background */
+	color: #ffffff;
+	font-family: Arial, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+	background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+	padding: 10px 20px; /* Add some padding for a more spacious navbar */
+}
+
+.navbar-brand {
+	font-weight: bold;
+	font-size: 1.8rem; /* Larger font size */
+	color: #ffffff;
+	transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.navbar-brand:hover {
+	color: #f8f9fa; /* Lighten the brand color on hover */
+}
+
+.nav-link {
+	font-size: 1.2rem; /* Increase font size */
+	color: #ffffff;
+	padding: 10px 15px;
+	transition: color 0.3s ease, transform 0.3s ease;
+	/* Smooth transition on hover */
+}
+
+.nav-link:hover {
+	color: #f8f9fa; /* Lighter color on hover */
+	transform: scale(1.1); /* Slight zoom effect */
+}
+
+.nav-link.active {
+	font-weight: bold;
+	color: #d1d1d1;
+}
+
+.navbar-toggler-icon {
+	filter: invert(1); /* Invert the color for better visibility */
+}
+
+/* Hero Section Styling */
+.hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 50px 20px;
+	flex-grow: 1;
+}
+
+.hero-image {
+	max-width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-image img {
+	width: 100%;
+	max-width: 500px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+	max-width: 500px;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.9);
+	/* Slightly transparent background */
+	border-radius: 8px;
+	color: #000000;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Query for Small Screens */
+@media ( max-width : 768px) {
+	.hero {
+		flex-direction: column;
+		text-align: center;
+	}
+	.hero-image, .form-container {
+		max-width: 100%;
+	}
+	.hero-image {
+		margin-bottom: 20px;
+	}
+}
+</style>
+</head>
+<body>
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<a class="navbar-brand" href="#">Counsellor App</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="/">About</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="./service.html">Services</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a>
+					</li>
+					<li class="nav-item"><a class="nav-link " href="/">Login</a>
+					</li>
+
+					<li class="nav-item"><a class="nav-link" href="/register">Register</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<div class="container mt-5 hero">
+		<!-- Left Side Image -->
+		<div class="hero-image">
+			<img
+				src="https://img.freepik.com/free-photo/happy-diverse-group-people-holding-hands-with-their-eyes-closed-rehab-meeting-overcome-their-addictions_662251-1083.jpg?uid=R173717329&ga=GA1.1.1119240353.1703156549&semt=ais_hybrid"
+				alt="Counselling">
+		</div>
+		<!-- Right Side Login Form -->
+		<div class="form-container">
+			<h2 class="text-center mb-4">Login Here!</h2>
+			<font style="color: red;">
+				<p th:text="${emsg}"></p>
+			</font>
+			<form th:action="@{/login}" th:object="${counsellor}" method="post">
+				<div class="mb-3">
+					<label for="email" class="form-label">Email:</label> <input
+						type="email" id="email" th:field="*{email}" class="form-control"
+						required placeholder="Enter your email" />
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label">Password:</label> <input
+						type="password" id="password" th:field="*{password}"
+						class="form-control" required placeholder="Enter your password" />
+				</div>
+				<button type="submit" class="btn btn-primary w-100">Login</button>
+			</form>
+			<p class="text-center mt-3">
+				<a href="/register" class="text-decoration-none">Don't have an
+					account? Register now</a>
+			</p>
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+</body>
+</html>

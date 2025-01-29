@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        table td {
+            padding: 10px;
+        }
+        .dashboard-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        /* Navbar hover effect */
+        .navbar-nav .nav-link:hover {
+            background-color: #007bff; /* Change this to your preferred hover color */
+            color: white; /* Optional: changes text color when hovered */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="dashboard">View Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="enquiry">Add Enquiry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="view-enquiries">View Enquiries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-box">
+            <h2>Dashboard Overview</h2>
+            <p>Welcome to the dashboard!</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td><strong>Total Enquiries :</strong></td>
+                    <td th:text="${dashboardInfo.totalEnqs}">0</td>
+                </tr>
+                <tr>
+                    <td><strong>Open Enquiries :</strong></td>
+                    <td th:text="${dashboardInfo.openEnqs}">0</td>
+                </tr>
+                <tr>
+                    <td><strong>Enrolled Enquiries :</strong></td>
+                    <td th:text="${dashboardInfo.enrolledEnqs}">0</td>
+                </tr>
+                <tr>
+                    <td><strong>Lost Enquiries :</strong></td>
+                    <td th:text="${dashboardInfo.lostEnqs}">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
