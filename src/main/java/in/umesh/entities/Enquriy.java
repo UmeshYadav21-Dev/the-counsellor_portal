@@ -111,6 +111,8 @@ public class Enquriy {
 	public void setCounsellor(Counsellor counsellor) {
 		this.counsellor = counsellor;
 	}
+	
+	System.out.println();
     
     
 }
